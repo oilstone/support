@@ -1,0 +1,24 @@
+{
+    "name": "oilstone/support",
+    "description": "Support classes",
+    "keywords": [
+        "support"
+    ],
+    "homepage": "https://github.com/oilstone/support",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Online Solutions",
+            "email": "support@onlinesolutionsltd.com"
+        }
+    ],
+    "require": {
+        "php" : ">=7.1.0",
+        "illuminate/support" : "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Oilstone\\Support\\": "src"
+        }
+    }
+}
