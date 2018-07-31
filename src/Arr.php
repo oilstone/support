@@ -1,44 +1,87 @@
 <?php
 
-namespace Oilstone\Support;
+namespace App\Services\Helpers;
 
-use Illuminate\Support\Arr as BaseArr;
+use Illuminate\Support\Arr as ArrHelper;
+use Illuminate\Support\Str;
 
-class Arr extends BaseArr {
-    
+/**
+ * Class Arr
+ * @package App\Services\Helpers
+ */
+class Arr extends ArrHelper
+{
     /**
-     * Convert array keys to camelCase
-     *
-     * @param  array input
+     * @param array $input
      * @return array
+     * @deprecated
      */
-    public static function keysToCamelCase(array $input) {
-
-        $output = [];
-        
-        foreach($input as $key => $value) {
-
-            $output[camel_case($key)] = (is_array($value)) ? self::keysToCamelCase($value) : $value;
-        }
-        
-        return $output;
+    public static function keysToCamelCase(array $input)
+    {
+        return static::camelKeys($input, false);
     }
-    
+
     /**
-     * Convert array keys to snake_case
-     *
-     * @param  array input
+     * @param array $input
+     * @return array
+     * @deprecated
+     */
+    public static function keysToSnakeCase(array $input)
+    {
+        return static::snakeKeys($input, false);
+    }
+
+    /**
+     * @param array $array
+     * @param bool $recursive
      * @return array
      */
-    public static function keysToSnakeCase(array $input) {
+    public static function camelKeys(array $array, bool $recursive = true): array
+    {
+        $camelCased = [];
 
-        $output = [];
-        
-        foreach($input as $key => $value) {
+        foreach ($array as $key => $value) {
+            $key = Str::camel($key);
 
-            $output[snake_case($key)] = (is_array($value)) ? self::keysToSnakeCase($value) : $value;
+            if ($recursive && is_array($value)) {
+                $value = static::camelKeys($value);
+            }
+
+            $camelCased[$key] = $value;
         }
-        
-        return $output;
+
+        return $camelCased;
+    }
+
+    /**
+     * @param array $array
+     * @param bool $recursive
+     * @return array
+     */
+    public static function snakeKeys(array $array, bool $recursive = true): array
+    {
+        $camelCased = [];
+
+        foreach ($array as $key => $value) {
+            $key = Str::snake($key);
+
+            if ($recursive && is_array($value)) {
+                $value = static::snakeKeys($value);
+            }
+
+            $camelCased[$key] = $value;
+        }
+
+        return $camelCased;
+    }
+
+    /**
+     * @param array $array
+     * @param int $columns
+     * @return array
+     */
+    public static function splitVertically(array $array, $columns = 2): array
+    {
+        return array_chunk($array, ceil(count($array) / $columns));
     }
 }
