@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\Helpers;
+namespace Oilstone\Support;
 
 use Illuminate\Support\Arr as ArrHelper;
 use Illuminate\Support\Str;
 
 /**
  * Class Arr
- * @package App\Services\Helpers
+ * @package Oilstone\Support
  */
 class Arr extends ArrHelper
 {
