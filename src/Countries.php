@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Countries;
+namespace Oilstone\Support;
 
 use Illuminate\Support\Collection;
 use Oilstone\GlobalClasses\MakeGlobal;
@@ -8,7 +8,7 @@ use PragmaRX\Countries\Package\Countries as Resolver;
 
 /**
  * Class Countries
- * @package App\Services\Countries
+ * @package Oilstone\Support
  */
 class Countries extends MakeGlobal
 {
