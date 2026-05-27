@@ -97,7 +97,7 @@ class Arr extends ArrHelper
 
         array_walk_recursive($data, function (&$item) {
             if (is_string($item) && !mb_detect_encoding($item, 'utf-8', true)) {
-                $item = utf8_encode($item);
+                $item = mb_convert_encoding($item, 'UTF-8', 'ISO-8859-1');
             }
         });
 

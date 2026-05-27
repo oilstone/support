@@ -1,9 +1,7 @@
 {
     "name": "oilstone/support",
     "description": "Support classes",
-    "keywords": [
-        "support"
-    ],
+    "keywords": ["support"],
     "homepage": "https://github.com/oilstone/support",
     "license": "MIT",
     "authors": [
@@ -13,9 +11,9 @@
         }
     ],
     "require": {
-        "php": ">=7.4.0",
-        "illuminate/support": ">=7.0",
-        "nesbot/carbon": "^2.43"
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "nesbot/carbon": "^2.66|^3.0"
     },
     "autoload": {
         "psr-4": {
